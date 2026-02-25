@@ -1,0 +1,26 @@
+<section class="products">
+
+  <div 
+    class="product-card"
+    *ngFor="let item of Products"
+    [ngClass]="{'out-of-stock': item.stock === 0}"
+  >
+      <img 
+        [src]="item.image" 
+        [alt]="item.name"
+        class="product-image"
+      >
+    <h3>{{item.name}}</h3>
+    <p class="price">₱{{item.price}}</p>
+    <p>Stock: {{item.stock}}</p>
+
+    <button 
+      (click)="Addtocart(item)"
+      [disabled]="item.stock === 0"
+    >
+      {{ item.stock === 0 ? 'Out of Stock' : 'Add to Cart' }}
+    </button>
+
+  </div>
+
+</section>
